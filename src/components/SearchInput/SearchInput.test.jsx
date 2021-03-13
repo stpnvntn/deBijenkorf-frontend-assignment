@@ -7,30 +7,45 @@ import SearchInput from "./index";
 describe("SearchInput", () => {
   it("renders correctly", () => {
     const tree = TestRenderer.create(
-      <SearchInput value="any" onChange={jest.fn()} onSearch={jest.fn()} />
+      <SearchInput
+        value="any"
+        onChange={() => {}}
+        onSearch={() => {}}
+        onClear={() => {}}
+      />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it("handles on change properly", () => {
-    const handleOnChange = jest.fn();
+    const handleChange = jest.fn();
 
     const { getByTestId } = render(
-      <SearchInput value="any" onChange={handleOnChange} onSearch={jest.fn()} />
+      <SearchInput
+        value="any"
+        onChange={handleChange}
+        onSearch={() => {}}
+        onClear={() => {}}
+      />
     );
 
     fireEvent.change(getByTestId("SearchInput-input"), {
       target: { value: "value" },
     });
 
-    expect(handleOnChange).toHaveBeenCalled();
+    expect(handleChange).toHaveBeenCalled();
   });
 
   it("handles on search properly if press enter on focused input", () => {
-    const handleOnSearch = jest.fn();
+    const handleSearch = jest.fn();
 
     const { getByTestId } = render(
-      <SearchInput value="any" onChange={jest.fn()} onSearch={handleOnSearch} />
+      <SearchInput
+        value="any"
+        onChange={() => {}}
+        onSearch={handleSearch}
+        onClear={() => {}}
+      />
     );
 
     getByTestId("SearchInput-input").focus();
@@ -39,18 +54,40 @@ describe("SearchInput", () => {
       code: "Enter",
     });
 
-    expect(handleOnSearch).toHaveBeenCalled();
+    expect(handleSearch).toHaveBeenCalled();
   });
 
   it("handles on search properly if click on search icon input", () => {
-    const handleOnSearch = jest.fn();
+    const handleSearch = jest.fn();
 
     const { getByTestId } = render(
-      <SearchInput value="any" onChange={jest.fn()} onSearch={handleOnSearch} />
+      <SearchInput
+        value="any"
+        onChange={() => {}}
+        onSearch={handleSearch}
+        onClear={() => {}}
+      />
     );
 
     fireEvent.click(getByTestId("SearchInput-search-icon"));
 
-    expect(handleOnSearch).toHaveBeenCalled();
+    expect(handleSearch).toHaveBeenCalled();
+  });
+
+  it("handles on clear properly if click on search icon input", () => {
+    const handleClear = jest.fn();
+
+    const { getByTestId } = render(
+      <SearchInput
+        value="any"
+        onChange={() => {}}
+        onSearch={() => {}}
+        onClear={handleClear}
+      />
+    );
+
+    fireEvent.click(getByTestId("SearchInput-clear-icon"));
+
+    expect(handleClear).toHaveBeenCalled();
   });
 });

@@ -18,18 +18,5 @@
   flex: 1;
   height: 100%;
   border: none;
-}
-
-.SearchIcon {
-  fill: #4d4d4d;
-}
-
-.SearchIcon:hover {
-  fill: #000;
-} 
-
-.searchButton {
-  cursor: pointer;
-  background: none;
-  border: none;
+  outline: none;
 }

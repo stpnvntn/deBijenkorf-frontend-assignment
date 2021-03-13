@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonWithIcon renders correctly 1`] = `
+<button
+  aria-label="label"
+  className="ButtonWithIcon"
+  data-testid="id"
+  onClick={[Function]}
+>
+  <span
+    className="icon"
+  />
+</button>
+`;

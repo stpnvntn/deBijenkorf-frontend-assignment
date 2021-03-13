@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
+import ButtonWithIcon from "../ButtonWithIcon";
+
 import styles from "./SearchInput.module.css";
 import { ReactComponent as SearchIcon } from "./search-24px.svg";
+import { ReactComponent as CloseIcon } from "./close-24px.svg";
 
-const SearchInput = ({ value, onChange, onSearch }) => {
+const SearchInput = ({ value, onChange, onSearch, onClear }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleInputFocus = () => {
@@ -34,13 +37,22 @@ const SearchInput = ({ value, onChange, onSearch }) => {
         onBlur={handleInputBlur}
         onKeyDown={handleKeyDown}
       />
-      <button
+      {value && value.length && (
+        <ButtonWithIcon
+          data-testid="SearchInput-clear-icon"
+          onClick={onClear}
+          aria-label="Clear"
+        >
+          <CloseIcon />
+        </ButtonWithIcon>
+      )}
+      <ButtonWithIcon
         data-testid="SearchInput-search-icon"
-        className={styles.searchButton}
         onClick={onSearch}
+        aria-label="Submit search"
       >
-        <SearchIcon className={styles.SearchIcon} aria-label="Submit search" />
-      </button>
+        <SearchIcon />
+      </ButtonWithIcon>
     </div>
   );
 };

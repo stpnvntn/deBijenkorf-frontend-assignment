@@ -1,0 +1,21 @@
+.ButtonWithIcon {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.ButtonWithIcon:focus {
+  outline: thin dotted;
+}
+
+.ButtonWithIcon:focus .icon {
+  fill: #000; 
+}
+
+.icon {
+  fill: #4d4d4d;
+}
+
+.icon:hover {
+  fill: #000;
+}

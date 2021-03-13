@@ -14,11 +14,16 @@ const Search = () => {
     setQuery(value);
   };
 
+  const handleInputClear = () => {
+    setQuery("");
+  };
+
   return (
     <SearchInput
       value={query}
       onChange={handleInputChange}
       onSearch={handleOnSearch}
+      onClear={handleInputClear}
     />
   );
 };

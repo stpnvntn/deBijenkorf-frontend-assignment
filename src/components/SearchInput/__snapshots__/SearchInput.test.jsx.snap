@@ -9,7 +9,7 @@ exports[`SearchInput renders correctly 1`] = `
     className="input"
     data-testid="SearchInput-input"
     onBlur={[Function]}
-    onChange={[MockFunction]}
+    onChange={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     placeholder="Search"
@@ -17,16 +17,32 @@ exports[`SearchInput renders correctly 1`] = `
     value="any"
   />
   <button
-    className="searchButton"
-    data-testid="SearchInput-search-icon"
-    onClick={[MockFunction]}
+    aria-label="Clear"
+    className="ButtonWithIcon"
+    data-testid="SearchInput-clear-icon"
+    onClick={[Function]}
   >
-    <svg
-      aria-label="Submit search"
-      className="SearchIcon"
+    <span
+      className="icon"
     >
-      search-24px.svg
-    </svg>
+      <svg>
+        close-24px.svg
+      </svg>
+    </span>
+  </button>
+  <button
+    aria-label="Submit search"
+    className="ButtonWithIcon"
+    data-testid="SearchInput-search-icon"
+    onClick={[Function]}
+  >
+    <span
+      className="icon"
+    >
+      <svg>
+        search-24px.svg
+      </svg>
+    </span>
   </button>
 </div>
 `;
