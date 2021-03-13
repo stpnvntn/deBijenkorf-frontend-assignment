@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput renders correctly 1`] = `
+<div
+  className="SearchInput "
+>
+  <input
+    aria-label="Search"
+    className="input"
+    data-testid="SearchInput-input"
+    onBlur={[Function]}
+    onChange={[MockFunction]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Search"
+    type="text"
+    value="any"
+  />
+  <button
+    className="searchButton"
+    data-testid="SearchInput-search-icon"
+    onClick={[MockFunction]}
+  >
+    <svg
+      aria-label="Submit search"
+      className="SearchIcon"
+    >
+      search-24px.svg
+    </svg>
+  </button>
+</div>
+`;

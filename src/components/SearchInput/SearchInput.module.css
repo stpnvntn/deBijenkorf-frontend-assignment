@@ -1,0 +1,35 @@
+.SearchInput {
+  min-width: 280px;
+  width: 100%;
+  max-width: 500px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.SearchInput.focused {
+  border-color: #4d4d4d;
+}
+
+.input {
+  flex: 1;
+  height: 100%;
+  border: none;
+}
+
+.SearchIcon {
+  fill: #4d4d4d;
+}
+
+.SearchIcon:hover {
+  fill: #000;
+} 
+
+.searchButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
