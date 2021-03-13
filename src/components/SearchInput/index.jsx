@@ -6,7 +6,7 @@ import styles from "./SearchInput.module.css";
 import { ReactComponent as SearchIcon } from "./search-24px.svg";
 import { ReactComponent as CloseIcon } from "./close-24px.svg";
 
-const SearchInput = ({ value, onChange, onSearch, onClear }) => {
+const SearchInput = ({ value, onChange, onSearch, onClear, suggestions }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleInputFocus = () => {
@@ -53,6 +53,28 @@ const SearchInput = ({ value, onChange, onSearch, onClear }) => {
       >
         <SearchIcon />
       </ButtonWithIcon>
+      {suggestions && suggestions.length > 0 && (
+        <div
+          data-testid={"SearchInput-suggestions"}
+          className={styles.lookupList}
+        >
+          {suggestions.map((suggestion) => (
+            <span
+              key={suggestion.searchterm}
+              className={styles.lookupListItem}
+              aria-label="suggestion.searchterm"
+            >
+              <span
+                className={styles.lookupListItemTitle}
+                dangerouslySetInnerHTML={{ __html: suggestion.html }}
+              />
+              <span className={styles.lookupListItemNumber}>
+                ({suggestion.nrResults})
+              </span>
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

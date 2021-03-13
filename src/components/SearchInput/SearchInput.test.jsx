@@ -90,4 +90,27 @@ describe("SearchInput", () => {
 
     expect(handleClear).toHaveBeenCalled();
   });
+
+  it("renders lookup with correct amount of items if there are suggestions", () => {
+    const handleClear = jest.fn();
+
+    const suggestions = [
+      { searchterm: "heren truien", nrResults: 42 },
+      { searchterm: "no match here", nrResults: 42 },
+      { searchterm: "kenzo trui", nrResults: 42 },
+    ];
+
+    const { getByTestId } = render(
+      <SearchInput
+        value="any"
+        onChange={() => {}}
+        onSearch={() => {}}
+        onClear={handleClear}
+        suggestions={suggestions}
+      />
+    );
+    expect(getByTestId("SearchInput-suggestions").children.length).toEqual(
+      suggestions.length
+    );
+  });
 });
