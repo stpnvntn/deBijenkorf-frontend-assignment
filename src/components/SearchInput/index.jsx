@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 import ButtonWithIcon from "../ButtonWithIcon";
 
@@ -6,7 +6,14 @@ import styles from "./SearchInput.module.css";
 import { ReactComponent as SearchIcon } from "./search-24px.svg";
 import { ReactComponent as CloseIcon } from "./close-24px.svg";
 
-const SearchInput = ({ value, onChange, onSearch, onClear, suggestions }) => {
+const SearchInput = ({
+  value,
+  onChange,
+  onSearch,
+  onClear,
+  suggestions,
+  onSelect,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleInputFocus = () => {
@@ -21,6 +28,11 @@ const SearchInput = ({ value, onChange, onSearch, onClear, suggestions }) => {
     if (event.key === "Enter") {
       onSearch();
     }
+  };
+
+  const handleSelect = (value) => () => {
+    setIsFocused(false);
+    onSelect(value);
   };
 
   return (
@@ -53,7 +65,7 @@ const SearchInput = ({ value, onChange, onSearch, onClear, suggestions }) => {
       >
         <SearchIcon />
       </ButtonWithIcon>
-      {suggestions && suggestions.length > 0 && (
+      {isFocused && suggestions && suggestions.length > 0 && (
         <div
           data-testid={"SearchInput-suggestions"}
           className={styles.lookupList}
@@ -63,6 +75,7 @@ const SearchInput = ({ value, onChange, onSearch, onClear, suggestions }) => {
               key={suggestion.searchterm}
               className={styles.lookupListItem}
               aria-label="suggestion.searchterm"
+              onMouseDown={handleSelect(suggestion.searchterm)}
             >
               <span
                 className={styles.lookupListItemTitle}
@@ -79,4 +92,4 @@ const SearchInput = ({ value, onChange, onSearch, onClear, suggestions }) => {
   );
 };
 
-export default SearchInput;
+export default memo(SearchInput);
