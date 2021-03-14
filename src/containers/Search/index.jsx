@@ -8,7 +8,7 @@ const Search = () => {
   const [query, setQuery] = useState("");
   const [isValueSelected, setValueSelected] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-  const restApi = useMemo(() => new RestApi("base_url"), []);
+  const restApi = useMemo(() => new RestApi(), []);
   useEffect(() => {
     let hasCanceled = false;
     let timeoutId;

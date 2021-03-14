@@ -1,10 +1,19 @@
+import { buildUrl } from "../utils/buildUrl";
+import { apiBaseUrl } from "./envVars";
+
 export class RestApi {
-  constructor(hostUrl) {
-    this.hostUrl = hostUrl;
+  constructor(baseUrl = apiBaseUrl) {
+    this.baseUrl = baseUrl;
   }
 
   async search(query) {
-    const response = await fetch(`/search?q=${query}`);
+    const url = buildUrl({
+      baseUrl: this.baseUrl,
+      path: "/search",
+      queryParams: { q: query },
+    });
+    console.log({ url });
+    const response = await fetch(url);
     const result = await response.json();
     return result.suggestions;
   }
