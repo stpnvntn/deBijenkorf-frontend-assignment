@@ -12,7 +12,6 @@ export class RestApi {
       path: "/search",
       queryParams: { q: query },
     });
-    console.log({ url });
     const response = await fetch(url);
     const result = await response.json();
     return result.suggestions;

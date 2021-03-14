@@ -66,6 +66,7 @@ const SearchInput = ({
         <SearchIcon />
       </ButtonWithIcon>
       {isFocused && suggestions && suggestions.length > 0 && (
+        // TODO leverage any Select lib here e.g. React Select
         <div
           data-testid={"SearchInput-suggestions"}
           className={styles.lookupList}
@@ -79,6 +80,7 @@ const SearchInput = ({
             >
               <span
                 className={styles.lookupListItemTitle}
+                // TODO use a XSS sanitizer if needed e.g. DOMPurify
                 dangerouslySetInnerHTML={{ __html: suggestion.html }}
               />
               <span className={styles.lookupListItemNumber}>

@@ -2,7 +2,6 @@ import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 
 import { getSuggestionsHighlights } from "./models";
-
 import Search from "./index";
 
 jest.mock("../../components/SearchInput", () => ({ suggestions, onChange }) => {
@@ -16,6 +15,7 @@ jest.mock("../../components/SearchInput", () => ({ suggestions, onChange }) => {
   );
 });
 jest.mock("./models");
+
 describe("ButtonWithIcon", () => {
   afterEach(() => {
     fetch.mockClear();

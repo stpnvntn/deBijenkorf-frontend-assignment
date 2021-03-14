@@ -36,7 +36,7 @@ describe("SearchInput", () => {
     expect(handleChange).toHaveBeenCalled();
   });
 
-  it("handles on search properly if press enter on focused input", () => {
+  it("handles on search properly if press enter or focused input", () => {
     const handleSearch = jest.fn();
 
     const { getByTestId } = render(
